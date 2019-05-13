@@ -25,8 +25,8 @@ class Fruit extends Component {
 }
 
 export default connect(function(state){
-    console.log(state)
+    console.log(state.fruitbuy)
     return {
-        num :state.num
+        num :state.fruitbuy.num
     }
 })(Fruit)

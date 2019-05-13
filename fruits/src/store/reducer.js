@@ -11,6 +11,7 @@ const initialState = {
 function fruitbuy(state = initialState ,action){
     switch(action.type){
         case FRUIT_BUY :
+            console.log(state)
             return Object.assign({},state,{
                 num : action.payload.number
             })
@@ -20,6 +21,6 @@ function fruitbuy(state = initialState ,action){
     }
 }
 
-export const fruitApp = (
+export const fruitApp = combineReducers({
     fruitbuy
-) 
+}) 
