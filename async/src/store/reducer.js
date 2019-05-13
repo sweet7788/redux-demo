@@ -3,14 +3,16 @@ import { USERS } from './key'
 import { combineReducers } from 'redux'
 
 const initState = {
-    name : 'swt'
+    userlist : [
+        
+    ]
 }
 
 function users(state=initState,action){
     switch(action.type){
         case USERS : 
             return Object.assign({},state,{
-                name : action.payload.name
+                userlist : action.payload.userlist
             })
         default :
             return state

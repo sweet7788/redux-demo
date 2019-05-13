@@ -14,7 +14,8 @@ function filterStatus(response) {
 }
 
 function filterJSON(response) {
-	return response.json();
+    console.log('hideLoadding')
+    return response.json();
 }
 
 function filterResult(result) {
@@ -27,6 +28,7 @@ function filterResult(result) {
 
 function get(url,param){
     url = api + url
+    console.log('showLoadding')
     return fetch(url,{
         method: 'get',
         mode: 'cors',
@@ -35,6 +37,7 @@ function get(url,param){
 }
 function post(url,param){
     url = api + url
+    console.log('showLoadding')
     return fetch(url,{
         method: 'post',
         mode: 'cors',

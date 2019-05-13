@@ -21,7 +21,7 @@ export function users(){
         todos().then((data)=>dispatch({
             type : USERS,
             payload : {
-                name : data[0].title
+                userlist : data
             }
         }))
     }

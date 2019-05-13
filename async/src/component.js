@@ -7,16 +7,33 @@ import { users } from './store/action'
 class Asyncpage extends Component{
     constructor(props){
         super(props)
+
         this.dispatch = props.dispatch
+
         this._getUserInfo = this._getUserInfo.bind(this)
     }
-    componentDidMount(){
-
+    componentWillMount(){
+        // console.log(this.props.userlist)
+        // this.userlist = this.props.userlist
+        console.log('asd')
     }
     render(){
+        console.log(this.props)
         return (
-            <div onClick={this._getUserInfo}>
-                name: {this.props.name}
+            // <div onClick={this._getUserInfo}>
+            //     name: {this.props.name}
+            // </div>
+            <div>
+                <div onClick={this._getUserInfo}>users:</div>
+                {
+                    this.props.userlist.length>0?this.props.userlist.map(function(ele,ind){
+                        return (
+                            <div key={ind}>
+                                {ele.title}
+                            </div>
+                        )
+                    }):''
+                }
             </div>
         )
     }
@@ -29,7 +46,8 @@ class Asyncpage extends Component{
 }
 
 export default connect(function(state){
+    console.log(state)
     return {
-        name:state.users.name
+        userlist:state.users.userlist
     }
 })(Asyncpage)
