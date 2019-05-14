@@ -11,10 +11,15 @@ class Asyncpage extends Component{
         this.dispatch = props.dispatch
 
         this._getUserInfo = this._getUserInfo.bind(this)
+        this.state = {
+            userlist: []
+        }
     }
-    componentWillMount(){
+    componentWillReceiveProps(nextProps){
         // console.log(this.props.userlist)
-        // this.userlist = this.props.userlist
+        this.setState({
+            userlist : nextProps.userlist
+        })
         console.log('asd')
     }
     render(){
@@ -26,7 +31,7 @@ class Asyncpage extends Component{
             <div>
                 <div onClick={this._getUserInfo}>users:</div>
                 {
-                    this.props.userlist.length>0?this.props.userlist.map(function(ele,ind){
+                    this.state.userlist.length>0?this.props.userlist.map(function(ele,ind){
                         return (
                             <div key={ind}>
                                 {ele.title}
