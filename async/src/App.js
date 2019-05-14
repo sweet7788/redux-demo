@@ -6,12 +6,18 @@ import { Provider } from 'react-redux'
 
 import  store  from './store/index'
 
-import Component from './component'
+import Main from './component/Main'
+
+import { HashRouter , Route, Switch } from 'react-router-dom'
 
 function App() {
   return (
     <Provider store={store}>
-      <Component></Component>
+      <HashRouter>
+          <Switch>
+            <Route path="/" component={Main}></Route>
+          </Switch>
+      </HashRouter>
     </Provider>
   );
 }

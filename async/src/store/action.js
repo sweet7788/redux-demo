@@ -1,4 +1,4 @@
-import { USERS } from './key'
+import { USERS, CLEAR_USERLIST } from './key'
 import { todos } from './service'
 
 export function users(){
@@ -24,5 +24,14 @@ export function users(){
                 userlist : data
             }
         }))
+    }
+}
+
+export function clearUserList(){
+    return{
+        type : CLEAR_USERLIST,
+        payload : {
+            userlist : []
+        }
     }
 }

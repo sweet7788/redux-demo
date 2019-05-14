@@ -2,7 +2,11 @@ import React , { Component } from 'react'
 
 import { connect } from 'react-redux'
 
-import { users } from './store/action'
+import { users,clearUserList } from '../store/action'
+
+import { Route, Switch, Link} from 'react-router-dom'
+
+import  UserDetail  from './UserDetail'
 
 class Asyncpage extends Component{
     constructor(props){
@@ -11,6 +15,7 @@ class Asyncpage extends Component{
         this.dispatch = props.dispatch
 
         this._getUserInfo = this._getUserInfo.bind(this)
+        this._clearUserInfo = this._clearUserInfo.bind(this)
         this.state = {
             userlist: []
         }
@@ -23,22 +28,32 @@ class Asyncpage extends Component{
         console.log('asd')
     }
     render(){
-        console.log(this.props)
+        console.log(this.state.userlist)
         return (
             // <div onClick={this._getUserInfo}>
             //     name: {this.props.name}
             // </div>
             <div>
                 <div onClick={this._getUserInfo}>users:</div>
-                {
-                    this.state.userlist.length>0?this.props.userlist.map(function(ele,ind){
-                        return (
-                            <div key={ind}>
-                                {ele.title}
-                            </div>
-                        )
-                    }):''
-                }
+                
+                    <div>
+                        {
+                            this.state.userlist.length>0?this.props.userlist.map(function(ele,ind){
+                                return (
+                                    <Link className="link" key={ind} to={{ pathname: '/detail/'+ind }}>
+                                        <span>{ele.title}</span>
+                                    </Link>
+                                )
+                            }):''
+                        }
+                    </div>
+                    {
+                        this.state.userlist.length>0?
+                        <div onClick={this._clearUserInfo}>
+                            清除用户
+                        </div>:''
+                    }
+                    
             </div>
         )
     }
@@ -47,6 +62,9 @@ class Asyncpage extends Component{
         // fetch('https://jsonplaceholder.typicode.com/todos/1')
         // .then(response => response.json())
         // .then(json => console.log(json))
+    }
+    _clearUserInfo(){
+        this.dispatch(clearUserList())
     }
 }
 

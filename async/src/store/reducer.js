@@ -1,4 +1,4 @@
-import { USERS } from './key'
+import { USERS ,CLEAR_USERLIST} from './key'
 
 import { combineReducers } from 'redux'
 
@@ -13,6 +13,10 @@ function users(state=initState,action){
         case USERS : 
             return Object.assign({},state,{
                 userlist : action.payload.userlist
+            })
+        case CLEAR_USERLIST :
+            return Object.assign({},state,{
+                userlist: action.payload.userlist
             })
         default :
             return state
