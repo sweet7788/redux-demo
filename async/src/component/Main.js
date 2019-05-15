@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { users,clearUserList } from '../store/action'
 
-import { Route, Switch, Link} from 'react-router-dom'
+import { Route, Switch, Link, Prompt} from 'react-router-dom'
 
 import  UserDetail  from './UserDetail'
 
@@ -35,7 +35,10 @@ class Asyncpage extends Component{
             // </div>
             <div>
                 <div onClick={this._getUserInfo}>users:</div>
-                
+                    <Prompt message={location=>{
+                        alert('no')
+                        return true
+                    }}></Prompt>
                     <div>
                         {
                             this.state.userlist.length>0?this.props.userlist.map(function(ele,ind){
