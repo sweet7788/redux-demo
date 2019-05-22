@@ -71,9 +71,12 @@ class Asyncpage extends Component{
     }
 }
 
-export default connect(function(state){
+export default connect(function(state,ownState){
     console.log(state)
     return {
         userlist:state.users.userlist
     }
+},function(dispatch,ownState){
+    console.log(dispatch,ownState)
+    return {dispatch}
 })(Asyncpage)
