@@ -41,7 +41,6 @@ export const clearUserList=createAction(CLEAR_USERLIST,async()=>{
     }
 })
 export const users = createAction(USERS,async(param)=>{
-    console.log(param)
     const data = await todos();
     return {
         userlist : data
