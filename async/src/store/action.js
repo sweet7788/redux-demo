@@ -1,7 +1,9 @@
 import { USERS, CLEAR_USERLIST } from './key'
 import { todos } from './service'
 
-import { createAction } from 'redux-actions'
+// import { createAction } from 'redux-actions'
+
+import createAction from '../util/createAction'
 
 // export function users(){
 //     // return {
@@ -28,6 +30,7 @@ import { createAction } from 'redux-actions'
 //         }))
 //     }
 // }
+createAction.bind(null,)
 
 export const clearUserList=createAction(CLEAR_USERLIST,async()=>{
     return{
@@ -36,11 +39,6 @@ export const clearUserList=createAction(CLEAR_USERLIST,async()=>{
             userlist : []
         }
     }
-},(resolved,rejected)=>{
-    return {
-        resolved,
-        rejected
-    }
 })
 export const users = createAction(USERS,async(param)=>{
     console.log(param)
@@ -48,9 +46,4 @@ export const users = createAction(USERS,async(param)=>{
     return {
         userlist : data
     };
-},({resolved,rejected})=>{
-    return {
-        resolved,
-        rejected
-    }
 })
