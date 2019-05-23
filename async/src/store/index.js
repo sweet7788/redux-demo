@@ -6,12 +6,24 @@ import thunk from 'redux-thunk'
 
 import { createLogger } from 'redux-logger'
 
-const logger = createLogger()
+import asyncAction from './asyncAction'
+
+import promise from 'redux-promise'
+
+
+
+let middleWares = [
+    thunk,
+    promise,
+    asyncAction,
+]
+if(!process.env.NODE_ENV ||process.env.NODE_ENV === 'development'){
+    const logger = createLogger()
+    middleWares.push(logger)
+}
+
 
 export default createStore(
     reducer,
-    applyMiddleware(
-        thunk,
-        logger
-    )    
+    applyMiddleware(...middleWares)
 )

@@ -26,6 +26,7 @@ const initState = {
 // }
 const actionHandle = {
     [USERS]:(state,action)=>{
+        console.log(action.payload)
         return {
             userlist : action.payload.userlist
         }

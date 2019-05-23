@@ -25,7 +25,6 @@ class Asyncpage extends Component{
         this.setState({
             userlist : nextProps.userlist
         })
-        console.log('asd')
     }
     render(){
         console.log(this.state.userlist)
@@ -61,7 +60,15 @@ class Asyncpage extends Component{
         )
     }
     _getUserInfo(){
-        this.dispatch(users())
+        this.dispatch(users({
+            name:'aa',
+            resolved(payload){
+                console.log(payload)
+            },  
+            rejected(payload){
+
+            }
+        }))
         // fetch('https://jsonplaceholder.typicode.com/todos/1')
         // .then(response => response.json())
         // .then(json => console.log(json))
