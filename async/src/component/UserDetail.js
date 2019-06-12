@@ -1,5 +1,5 @@
 import React,{ Component } from 'react'
-
+import { Link, Route} from 'react-router-dom'
 
 class UserDetail extends Component{
     constructor(props){
@@ -13,6 +13,12 @@ class UserDetail extends Component{
         return (
             <div>
                 asd
+                <Link to={this.props.match.url + '/again'}>再次进入detial</Link>
+                <Route exact path={this.props.match.url + '/again'} render={(props)=>{
+                    return (
+                        <div>again</div>
+                    )
+                }}></Route>
             </div>
         )
     }
